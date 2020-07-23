@@ -9,7 +9,18 @@ export const reducer = (state = initialState, action) => {
     case 'SET_SECTION_CATEGORY':
       return {
         ...state,
-        test: 'hello world',
+        sectionCategory: action.sectionCategory,
+      };
+    case 'SET_CATEGORY_VIEW':
+      return {
+        ...state,
+        categoryView: action.categoryView,
+      };
+    case 'ceva':
+      console.log(action.altceva);
+      return {
+        ...state,
+        test: action.altceva,
       };
     default:
       return state;
