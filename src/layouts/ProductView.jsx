@@ -31,6 +31,18 @@ const ProductView = () => {
 
       dispatchAction({ type: 'SET_SECTION_CATEGORY', sectionCategory });
 
+      const facetView = response.FacetView.map(({ Entry, name }) => {
+        let facet = null;
+        if (name === 'ManufacturerName') {
+          facet = Entry.map(({ label, count }) => {
+            return { label, count };
+          });
+        }
+        return facet;
+      });
+
+      dispatchAction({ type: 'SET_FACET_VIEW', facetView });
+
       const restructuredCategoryView = Promise.all(
         response.CatalogEntryView.map(async (entry) => {
           const correctUrl = entry.resourceId.replace(regex, '.');
@@ -38,12 +50,9 @@ const ProductView = () => {
           try {
             const res = await fetch(correctUrl);
             const json = await res.json();
-            const manufacturerName = json.CatalogEntryView[0].manufacturer;
+            const completeItemInformation = json.CatalogEntryView;
 
-            return {
-              ...entry,
-              manufacturerName,
-            };
+            return completeItemInformation[0];
           } catch (error) {
             console.error(error);
           }

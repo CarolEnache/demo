@@ -1,7 +1,7 @@
 export const initialState = {
   categoryView: [],
   sectionCategory: [],
-  test: '',
+  facetView: [],
 };
 
 export const reducer = (state = initialState, action) => {
@@ -16,11 +16,10 @@ export const reducer = (state = initialState, action) => {
         ...state,
         categoryView: action.categoryView,
       };
-    case 'ceva':
-      console.log(action.altceva);
+    case 'SET_FACET_VIEW':
       return {
         ...state,
-        test: action.altceva,
+        facetView: action.facetView,
       };
     default:
       return state;
