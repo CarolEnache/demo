@@ -7,3 +7,8 @@ export const Container = styled.div`
   margin-right: auto;
   margin-left: auto;
 `;
+export const Wrapper = styled.div`
+  @media (min-width: 768px) {
+    display: flex;
+  }
+`;

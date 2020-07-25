@@ -12,7 +12,7 @@ import { BreadCrumbs } from '../components/bread-crumbs';
 import { Filter } from '../components/filters';
 import { ListOfItems } from '../components/list-of-items';
 
-import { Container } from './styledLayouts';
+import { Container, Wrapper } from './styledLayouts';
 
 const hardcodedId = '10023';
 
@@ -43,8 +43,10 @@ const ProductView = () => {
   return (
     <Container>
       <BreadCrumbs props={context} />
-      <Filter />
-      <ListOfItems filteredCategoryView={filteredCategoryView} />
+      <Wrapper>
+        <Filter />
+        <ListOfItems filteredCategoryView={filteredCategoryView} />
+      </Wrapper>
     </Container>
   );
 };

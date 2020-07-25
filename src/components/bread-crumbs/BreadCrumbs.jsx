@@ -1,11 +1,12 @@
 import React from 'react';
+import { Count, Title } from './styledComponents';
 
 const BreadCrumbs = ({ props }) => {
   const { sectionCategory, categoryView } = props;
   return (
     <div>
-      <h3>{sectionCategory}</h3>
-      <p>{categoryView.length} items</p>
+      <Title>{sectionCategory}</Title>
+      <Count>{categoryView.length} items</Count>
     </div>
   );
 };
