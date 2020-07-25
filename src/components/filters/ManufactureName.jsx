@@ -1,7 +1,7 @@
 import React from 'react';
 import { List, ListItem, ListHeader } from './styledComponents';
 
-const ManufactureName = ({ facetView, selected, setSelected }) => {
+const ManufactureName = ({ facetView = [], selected, setSelected }) => {
   return (
     <>
       <ListHeader>Manufacture name</ListHeader>
