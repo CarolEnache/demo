@@ -2,6 +2,7 @@ export const initialState = {
   categoryView: [],
   sectionCategory: [],
   facetView: [],
+  filteredCategoryView: [],
 };
 
 export const reducer = (state = initialState, action) => {
@@ -15,6 +16,11 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         categoryView: action.categoryView,
+      };
+    case 'SET_FILTERED_CATEGORY_VIEW':
+      return {
+        ...state,
+        filteredCategoryView: action.filteredCategoryView,
       };
     case 'SET_FACET_VIEW':
       return {

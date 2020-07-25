@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer, useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
 
 import { useFetch } from '../custom-hooks';
 import { StateContext } from '../App';
@@ -12,7 +12,9 @@ import { Filter } from '../components/filters';
 const ProductView = () => {
   const hardcodedId = '10023';
   const [context, dispatchAction] = useContext(StateContext);
+  const { categoryView, filteredCategoryView } = context;
 
+  console.log(categoryView, filteredCategoryView);
   const regex = /:5443/gi;
 
   const { response } = useFetch(
@@ -22,7 +24,6 @@ const ProductView = () => {
 
   useEffect(() => {
     if (!!response) {
-      console.log(response);
       const sectionCategory = response.BreadCrumbTrailEntryView.map(
         (category) => category.value === hardcodedId && category.label
       )
@@ -37,9 +38,10 @@ const ProductView = () => {
           facet = Entry.map(({ label, count }) => {
             return { label, count };
           });
+          return facet;
         }
         return facet;
-      });
+      }).filter((f) => f !== null)[0];
 
       dispatchAction({ type: 'SET_FACET_VIEW', facetView });
 
@@ -58,20 +60,22 @@ const ProductView = () => {
           }
         })
       );
-      restructuredCategoryView.then((categoryView) =>
-        dispatchAction({ type: 'SET_CATEGORY_VIEW', categoryView })
-      );
+      restructuredCategoryView.then((categoryView) => {
+        dispatchAction({ type: 'SET_CATEGORY_VIEW', categoryView });
+        return dispatchAction({
+          type: 'SET_FILTERED_CATEGORY_VIEW',
+          filteredCategoryView: categoryView,
+        });
+      });
     }
   }, [response]);
-
-  console.log(context);
 
   return (
     <Container>
       <BreadCrumbs props={context} />
       <Filter />
       <ul>
-        {context.categoryView.map(({ Price, name }, index) => {
+        {filteredCategoryView.map(({ Price, name }, index) => {
           return (
             <li key={index}>
               <ImagePlaceholder />
