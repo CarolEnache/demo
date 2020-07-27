@@ -8,7 +8,7 @@ const ListOfItems = ({ filteredCategoryView = [] }) => {
     <List>
       {filteredCategoryView.map(({ Price, name }, index) => {
         return (
-          <ListItem key={index}>
+          <ListItem key={index} data-testid='item'>
             <ImagePlaceholder />
             {name} <span>${Price[0].priceValue}</span>
           </ListItem>

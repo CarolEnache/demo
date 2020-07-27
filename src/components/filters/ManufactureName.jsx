@@ -9,6 +9,7 @@ const ManufactureName = ({ facetView = [], selected, setSelected }) => {
         {facetView.map(({ label, count }, index) => (
           <ListItem
             key={index}
+            data-testid='manufacture-name'
             onClick={() =>
               !selected.includes(label) && setSelected([...selected, label])
             }

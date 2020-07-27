@@ -1,5 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+In order to have the API working please download `Allow CORS: Access-Control-Allow-Origin` from [here](https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf?hl=en)
+
 ## Available Scripts
 
 In the project directory, you can run:

@@ -9,6 +9,7 @@ const SelectedFilters = ({ selected, setSelected }) => {
         {selected.map((selection, index) => (
           <ListItem
             key={index}
+            data-testid='selected-filters'
             onClick={() => setSelected(selected.filter((s) => s !== selection))}
           >
             {selection} <span>x</span>

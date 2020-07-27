@@ -6,10 +6,11 @@ import { ProductView } from './layouts';
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
   const cachedState = useMemo(() => [state, dispatch], [state]);
-
   return (
     <StateContext.Provider value={cachedState}>
-      <ProductView />
+      <div data-testid={'application'}>
+        <ProductView />
+      </div>
     </StateContext.Provider>
   );
 }
